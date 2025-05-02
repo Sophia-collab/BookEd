@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<title>BookEd</title>
+<head>
+
+    <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    /*body*/
+    body {
+        background-color: #ffefd5;
+        font-family: arial;
+    }
+
+    /*header*/
+    header {
+		display: flex;
+		justify-content: space-between;
+		background-color: #ffefd5;
+		padding: 5px;  
+        margin-left: 25px;
+        margin-right: 25px;
+        border-bottom: 4px solid black;
+	}
+        
+    /*first header*/
+    .firsthead {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .firsthead nav {
+        display: flex;
+        gap: 33px;
+        margin: 0 15px;
+    }
+
+    .firsthead nav a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /*Cart*/
+    .cart {
+        padding-right: 15px;
+    }
+
+    /* Wish */
+    .wish {
+        position: relative;  /* To position the heart correctly */
+    }
+
+    .wish::after {
+        content: "♡";
+        color: black;
+        font-size: 30px;  
+        position: absolute;
+        top: 33%;
+        left: 100%;
+        transform: translateY(-50%);
+        margin-left: 5px;
+    }
+
+
+    /*second header*/
+    .secondhead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 5px; 
+        padding-bottom: 5px; 
+        margin-left: 25px;
+        margin-right: 25px;
+        border-bottom: 4px solid black;
+    }
+
+    .secondhead input {
+        width: 700px;
+        height: 50px;
+        border: 3px solid black;
+        border-radius: 40px;
+        background-color: #ffefd5;
+        padding: 0 20px; 
+        font-size: 18px;
+    }
+
+    .alignment {
+        margin-right: -270px;
+    }
+
+    .search {
+        padding-right: 25px;
+    }
+
+    /* Navigation/Third header */
+    .navi nav {
+            background-color: #ffefd5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+	
+		.navi nav a {
+			color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 23px;
+            cursor: pointer;
+            display: inline-block;            
+            padding: 10px 20px;       
+            border-radius: 10px; 
+			transition: transform 0.3s ease, background-color 0.3s ease;
+		}
+	
+		.navi nav a:hover {
+			background-color: #ffd46a;
+            color: white;
+			transform: scale(1.05);
+		}
+
+        .sep {
+            font-size: 35px;
+        }
+        
+    .border {
+        margin-top: 100px;
+        border: 2px solid #0894b4;
+    }
+
+    /* container */
+    .container {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+    }
+
+    .container img {
+        width: 150px;
+        height: 200px;
+        padding: 40px;
+    }
+
+    .comment {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center; 
+        width: 250px;
+        margin: 5px;
+    }
+
+    .comment img {
+        width: 200px;
+        height: 50px;
+        margin-top: -65px;
+        margin-bottom: -30px;
+        }
+
+    .comment p {
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 20px;
+        padding-top: 3px;
+        margin-top: 0px;
+    }
+        
+    .border {
+        padding: 5px;
+        background-color:#0894b4;
+        border-radius: 6px;
+    }
+
+    .banner {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: left;
+        gap: 30px;
+        padding: 20px;
+        background-color:#0894b4;
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 25px;
+        padding: 25px 18px;
+    }
+
+    .marquee {
+        overflow: hidden;
+        position: relative;
+        background-color: #0894b4;
+    }
+
+    .marquee p {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 55s linear infinite;
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 25px;
+        color: black;
+    }
+
+    @keyframes marquee {
+        0%   { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    .title-cat {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: bold;
+        font-size: 35px;
+        margin: 20px;
+        margin-bottom: -50px;
+    }
+
+    .catalogue {
+        margin: 60px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        margin-left: 80px;
+        margin-right: 80px;
+        padding-top: 30px;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .catalogue h1 {
+        font-family: arial;
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .catalogue ul {
+        display: flex;
+        flex-wrap: wrap;  
+        justify-content: left;
+        gap: 120px;
+        list-style: none;
+    }
+
+    .catalogue ul li a {
+        font-family: 'Futura', 'Avenir', sans-serif;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+    }
+
+    .line {
+        border-top: 3px solid black;
+    }
+
+    footer {
+        margin-top: 30px;
+        text-align: center;
+        background-color:#ffe5b4;
+    }
+
+
+    </style>
+</head>
+
+<header>
+    <!--acount-->
+<article class="firsthead">
+    <div>
+        <nav>
+            <a href="#sign">SIGN UP</a> | <a class="rightboard" href="#log">LOG IN</a> | <a class="wish" href="#wish">WISHLIST</a>
+        </nav>
+    </div>
+    
+    <!---cart-->
+    <div class="cart">
+        <img src="images/cart.png" alt="cart" width="40" height="40">
+    </div>
+</article>
+</header>
+
+<body>
+<article class="secondhead">
+    <div>
+            <img src="images/logo.PNG" alt="BookEd" width="320px" height="70px">
+    </div>
+
+    <div class="alignment">
+        <form action="#">
+            <label class="keywords" for="search">
+                <input type="text" id="search" placeholder="SEARCH BY KEYWORDS">
+            </label>
+        </form>
+    </div>
+    <div class="search"> 
+        <img src="images/search.png" alt="search" width="35" height="35">
+    </div>
+</article>
+
+<article class="navi">
+    <nav>
+        <a href="index.html">HOME</a>
+        <span class="sep">|||</span>
+        <a href="book.html">BOOKS</a>
+        <span class="sep">|||</span>
+        <a href="ebook.html">E-BOOKS</a>
+        <span class="sep">|||</span>
+        <a href="supplies.html">SCHOOL SUPPLIES</a>
+    </nav>
+</article>
+
+<article class="container">
+    <div>
+        <img src="BOOKS/educational - books/grammar.png" alt="grammar">
+        <img src="BOOKS/textbooks - books/algorithms.jpg" alt="algorithms">
+        <img src="BOOKS/reference - books/dictionary.jpg" alt="dictionary">
+        <img src="BOOKS/educational - books/math.png" alt="math">
+        <img src="E-BOOKS/digital textbooks - ebooks/history.png" alt="history">
+    </div>
+
+    <div class="comment">
+        <img src="images/logo.PNG" alt="logo" width="70" height="30">
+        <p>GET A SOFT</p>
+        <p>COPIES FOR AS</p>
+        <p>LOW AS 100P</p>
+        <p class="border">SHOP NOW!</p>
+    </div>
+</article>
+
+<article class="banner">
+    <div class="marquee">
+        <p>
+            FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+            FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+            FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+            FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+        </p>
+    </div>
+</article>
+
+<div class="title-cat"><p>Browsing Book Catalogue</p></div>
+
+<!--Books-->
+<article class="catalogue">
+    <h1>Books</h1>
+<section>
+    <ul>
+        <li><a href="educational">Educational Workbooks</a></li>
+        <li><a href="reference">Reference Books</a></li>
+        <li><a href="texbooks">Textbooks</a></li>
+    </ul>
+</section>
+</article>
+
+<!--E-books-->
+<article class="catalogue line">
+    <h1>E-Books</h1>
+<section>
+    <ul>
+        <li><a href="interactive">Interactive Study Material</a></li>
+        <li><a href="educguide">Educational Guide</a></li>
+        <li><a href="reference">Digital Textbooks</a></li>
+    </ul>
+</section>
+</article>
+
+<!--School Supplies-->
+<article class="catalogue line">
+    <h1>School Supplies</h1>
+<section>
+    <ul>
+        <li><a href="art">Art & Writing Supplies</a></li>
+        <li><a href="teaching">Teaching Aids</a></li>
+        <li><a href="science">Science Kits</a></li>
+        <li><a href="math">Math Tools</a></li>
+        <li><a href="papers">Papers</a></li>
+    </ul>
+</section>
+</article>
+
+<footer>
+    <h2>Footer Here</h2>
+</footer>
+
+
+</body>
+</html>

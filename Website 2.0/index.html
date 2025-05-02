@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<title>BookEd</title>
+
+    <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    /*body*/
+    body {
+        background-color: #ffefd5;
+        font-family: arial;
+    }
+
+    /*header*/
+    header {
+		display: flex;
+		justify-content: space-between;
+		background-color: #ffefd5;
+		padding: 5px;  
+        margin-left: 25px;
+        margin-right: 25px;
+        border-bottom: 4px solid black;
+	}
+        
+    /*first header*/
+    .firsthead {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .firsthead nav {
+        display: flex;
+        gap: 33px;
+        margin: 0 15px;
+    }
+
+    .firsthead nav a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /*Cart*/
+    .cart {
+        padding-right: 15px;
+    }
+
+    /* Wish */
+    .wish {
+        position: relative;  /* To position the heart correctly */
+    }
+
+    .wish::after {
+        content: "♡";
+        color: black;
+        font-size: 30px;  
+        position: absolute;
+        top: 33%;
+        left: 100%;
+        transform: translateY(-50%);
+        margin-left: 5px;
+    }
+
+
+    /*second header*/
+    .secondhead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 5px; 
+        padding-bottom: 5px; 
+        margin-left: 25px;
+        margin-right: 25px;
+        border-bottom: 4px solid black;
+    }
+
+    .secondhead input {
+        width: 700px;
+        height: 50px;
+        border: 3px solid black;
+        border-radius: 40px;
+        background-color: #ffefd5;
+        padding: 0 20px; 
+        font-size: 18px;
+    }
+
+    .alignment {
+        margin-right: -270px;
+    }
+
+    .search {
+        padding-right: 25px;
+    }
+
+    /* Navigation/Third header */
+        .navi nav {
+            background-color: #ffefd5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+	
+		.navi nav a {
+			color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 23px;
+            cursor: pointer;
+            display: inline-block;            
+            padding: 10px 20px;       
+            border-radius: 10px; 
+			transition: transform 0.3s ease, background-color 0.3s ease;
+		}
+	
+		.navi nav a:hover {
+			background-color: #ffd46a;
+            color: white;
+			transform: scale(1.05);
+		}
+
+        .sep {
+            font-size: 35px;
+        }
+
+        /* container */
+        .container {
+            display: flex;
+            flex-direction: row;
+            background-color: white;
+        }
+
+        .container img {
+            width: 150px;
+            height: 200px;
+            padding: 40px;
+        }
+
+        .comment {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            width: 250px;
+            margin: 5px;
+        }
+        .comment img {
+            width: 200px;
+            height: 50px;
+            margin-top: -65px;
+            margin-bottom: -30px;
+        }
+
+        .comment p {
+            font-family: Verdana;
+            font-weight: bold;
+            font-size: 20px;
+            padding-top: 3px;
+            margin-top: 0px;
+        }
+        
+    .border {
+        padding: 5px;
+        background-color:#0894b4;
+        border-radius: 6px;
+    }
+
+    .banner {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: left;
+        gap: 30px;
+        padding: 20px;
+        background-color:#0894b4;
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 25px;
+        padding: 25px 18px;
+    }
+
+    .marquee {
+        overflow: hidden;
+        position: relative;
+        background-color: #0894b4;
+    }
+
+    .marquee p {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 55s linear infinite;
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 25px;
+        color: black;
+    }
+
+    @keyframes marquee {
+        0%   { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    /* Category */
+    .space {
+        margin-top: 80px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .see {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    .see ul {
+        list-style-type: none; 
+        margin: 0;
+        padding: 0;
+        padding-bottom: 6px;
+    }
+
+    .see ul li a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .space h1 {
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+
+    .category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    }
+
+    /* Product */
+    figure {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        margin-left: 25px;
+        margin-right: 20px;
+    }
+
+    figure img {
+        width: 150px;
+        height: 200px;
+    }
+
+    figure p {
+        font-family: helvetica;
+        text-align: justify;
+        margin-bottom: 5px;
+        padding-bottom: 7px;
+    }
+
+    figure h2 {
+        font-family: "Playfair Display", serif;
+        margin-top: auto;
+        text-align: center;
+    }
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    background-color: #ffe5b4;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px; 
+    flex-wrap: wrap; 
+}
+
+footer .footer-section {
+    text-align: left;
+    min-width: 200px;
+}
+
+footer h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+footer nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+footer nav a:hover {
+    color: darkorange;
+}
+
+.footer-section img {
+    margin: 5px 5px 0 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    object-fit: contain;
+}
+
+.payment-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 290px;
+    margin-top: 10px;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <!--acount-->
+<article class="firsthead">
+    <div>
+        <nav>
+            <a href="#sign">SIGN UP</a> | <a class="rightboard" href="#log">LOG IN</a> | <a class="wish" href="#wish">WISHLIST</a>
+        </nav>
+    </div>
+    
+    <!---cart-->
+    <div class="cart">
+        <a href="cart">
+            <img src="images/cart.png" alt="cart" width="40" height="40">
+        </a>
+    </div>
+</article>
+</header>
+
+<article class="secondhead">
+    <div>
+            <img src="images/logo.PNG" alt="BookEd" width="320px" height="70px"> 
+    </div>
+
+    <div class="alignment">
+        <form action="#">
+            <label class="keywords" for="search">
+                <input type="text" id="search" placeholder="SEARCH BY KEYWORDS">
+            </label>
+        </form>
+    </div>
+    <div class="search"> 
+        <img src="images/search.png" alt="search" width="35" height="35">
+    </div>
+</article>
+
+<article class="navi">
+    <nav>
+        <a href="index.html">HOME</a>
+        <span class="sep">|||</span>
+        <a href="book.html">BOOKS</a>
+        <span class="sep">|||</span>
+        <a href="ebook.html">E-BOOKS</a>
+        <span class="sep">|||</span>
+        <a href="supplies.html">SCHOOL SUPPLIES</a>
+    </nav>
+</article>
+
+    <article class="container">
+        <div>
+            <img src="BOOKS/educational - books/grammar.png" alt="grammar">
+            <img src="BOOKS/textbooks - books/algorithms.jpg" alt="algorithms">
+            <img src="BOOKS/reference - books/dictionary.jpg" alt="dictionary">
+            <img src="BOOKS/educational - books/math.png" alt="math">
+            <img src="E-BOOKS/digital textbooks - ebooks/history.png" alt="history">
+        </div>
+
+        <div class="comment">
+            <img src="images/logo.PNG" alt="logo" width="70" height="30">
+            <p>GET A SOFT</p>
+            <p>COPIES FOR AS</p>
+            <p>LOW AS 100P</p>
+            <p class="border">SHOP NOW!</p>
+        </div>
+    </article>
+
+    <article class="banner">
+        <div class="marquee">
+            <p>
+                FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+                FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+                FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+                FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF • FOLLOWING SOFT COVERS 100% OFF •
+            </p>
+        </div>
+    </article>
+
+    <!--RECOMMENDED-->
+    <article class="space">
+        <h1>RECOMMENDED BOOKS</h1>
+        <section class="category">
+            <figure>
+            <img src="BOOKS/educational - books/grammar.png" alt="Grammar Galore">
+            <p> Get your fifth grader clued into advanced grammar. She'll get to edit a few improper sentences, work on different parts of speech, and practice using correct punctuation marks. </p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/reference - books/encyclopedia.jpg" alt="World History">
+            <p>A reference work or compendium is a comprehensive collection of general or specific knowledge in a specific field or discipline.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/textbooks - books/art.jpg" alt="Art History">
+            <p>A comprehensive guide to the history of art, from ancient civilizations to contemporary works.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/educational - books/life cycle.png" alt="Life Cycles">
+            <p> In this life science packet kids will cut and paste various forms of insects, mammals and more, learning the similarities and differences of living things during stages of life.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/reference - books/almanac.avif" alt="The World Almanac">
+            <p> A regularly published listing of a set of current information about one or multiple subjects.</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="BOOKS/textbooks - books/economics.jpg" alt="Principles of Economics">
+            <p>An influential introductory economics textbook that simplifies complex economic concepts for students.</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="BOOKS/educational - books/outer spcae.png" alt="Outer Space Objects">
+            <p>This book orbits all sorts of outer space objects. Introduce kids to bits of space with this easy-to-read series that goes from Earth to nebula in light speed</p>
+            <h2>P106.00</h2>
+            </figure>
+        </section>
+    </article>
+
+    <!--BOOKS-->
+    <article class="space">
+        <div class="see">
+        <h1>BOOKS</h1>
+        <ul>
+            <li><a href="book.html">See More</a></li>
+        </ul>
+        </div>
+        <section class="category">
+            <figure>
+            <img src="BOOKS/educational - books/grammar.png" alt="Grammar Galore">
+            <p> Get your fifth grader clued into advanced grammar. She'll get to edit a few improper sentences, work on different parts of speech, and practice using correct punctuation marks. </p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/textbooks - books/algorithms.jpg" alt="Introduction to Algoritms">
+            <p>A must- have for computer science students, providing in-depth knowledge of algorithms and data structures</p>
+            <h2>P106.00</h2>
+            </figure>
+    
+            <figure>
+            <img src="BOOKS/educational - books/life cycle.png" alt="Life Cycle">
+            <p>In this life science packet kids will cut and paste various forms of insects, mammals and more, learning the similarities and differences of living things during stages of life. </p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/reference - books/encyclopedia.jpg" alt="Encyclopedia">
+            <p>A reference work or compendium is a comprehensive collection of general or specific knowledge in a specific field or discipline.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="BOOKS/educational - books/outer spcae.png" alt="Space Bits: Outer Space Objects">
+            <p>This book orbits all sorts of outer space objects. Introduce kids to bits of space with this easy-to-read series that goes from Earth to nebula in light speed</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="BOOKS/textbooks - books/physics.jpg" alt="  Physics for Scientist and Engineers">
+            <p> A comprehensive textbook that helps students understand the principles of physics and their real-world applications.</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="BOOKS/reference - books/almanac.avif" alt="Almanac">
+            <p> A regularly published listing of a set of current information about one or multiple subjects.</p>
+            <h2>P106.00</h2>
+            </figure>
+        </section>
+    </article>
+    
+    <!--E-BOOKS-->
+    <article class="space">
+        <div class="see">
+        <h1>E-BOOKS</h1>
+        <ul>
+            <li><a href="ebook.html">See More</a></li>
+        </ul>
+        </div>
+        <section class="category">
+            <figure>
+            <img src="E-BOOKS/digital textbooks - ebooks/ethics.png" alt="Ethics for A-Level">
+            <p>The fields of normative ethics, metaethics and applied ethics are explained rigorously and systematically, with a vivid writing style that enlivens the topics with energy and wit.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="E-BOOKS/educational guide - ebooks/intro to business.png" alt="Introduction to Business">
+            <p>Introduction to Business covers the scope and sequence of most introductory business courses.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="E-BOOKS/interactive - ebooks/materials.jpg" alt="Interactive Multimedia in Education and Training">
+            <p> Interactive Multimedia in Education and Training emerges out of the need to share information and knowledge on the research and practices of using multimedia in various educational settings.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="E-BOOKS/digital textbooks - ebooks/gender.png" alt="Introduction to Women, Gender, Sexuality Studies">
+            <p>This textbook explores feminist concepts and analytical frameworks in Women, Gender, Sexualities, focusing on gendered labor, power structures, and historical feminist social movements.</p>
+            <h2>P106.00</h2>
+            </figure>
+
+            <figure>
+            <img src="E-BOOKS/digital textbooks - ebooks/psychology.png" alt="Educational Psychology - Second Edition">
+            <p>Chapters in the text can be assigned either from beginning to end, as with a conventional printed book, or they can be selected in some other sequence to meet the needs of particular students or classes.</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="E-BOOKS/interactive - ebooks/techniques.jpg" alt="Interactive Techniques For Learning">
+            <p>Introduces the Thiagi approach to designing and facilitating learning activities, combining their framework with updated insights from recent research on the science of learning.</p>
+            <h2>P106.00</h2>
+            </figure>
+            
+            <figure>
+            <img src="E-BOOKS/digital textbooks - ebooks/music.png" alt="Understanding Basic Music Theory">
+            <p>Although it is significantly expanded from "Introduction to Music Theory", this book still covers only the bare essentials of music.</p>
+            <h2>P106.00</h2>
+            </figure>
+        </section>
+    </article>
+
+        <!--SCHOOL SUPPLIES-->
+        <article class="space">
+            <div class="see">
+            <h1>SCHOOL SUPPLIES</h1>
+            <ul>
+                <li><a href="supplies.html">See More</a></li>
+            </ul>
+            </div>
+            <section class="category">
+                <figure>
+                <img src="BOOKS/textbooks - books/algorithms.jpg" alt="Introduction to Algoritms">
+                <p>A must- have for computer science students, providing in-depth knowledge of algorithms and data structures</p>
+                <h2>P106.00</h2>
+                </figure>
+    
+                <figure>
+                <img src="BOOKS/textbooks - books/art.jpg" alt=" Art History">
+                <p>A comprehensive guide to the history of art, from ancient civilizations to contemporary works.</p>
+                <h2>P106.00</h2>
+                </figure>
+    
+                <figure>
+                <img src="BOOKS/textbooks - books/economics.jpg" alt="Principles of Economics">
+                <p>An influential introductory economics textbook that simplifies complex economic concepts for students.</p>
+                <h2>P106.00</h2>
+                </figure>
+    
+                <figure>
+                <img src="BOOKS/textbooks - books/nursing.jpg" alt=" Fundamentals of Nursing">
+                <p>An essential textbook for nursing students, covering core concepts and nursing practices.
+                </p>
+                <h2>P106.00</h2>
+                </figure>
+    
+                <figure>
+                <img src="BOOKS/textbooks - books/physics.jpg" alt="  Physics for Scientist and Engineers">
+                <p> A comprehensive textbook that helps students understand the principles of physics and their real-world applications.</p>
+                <h2>P106.00</h2>
+                </figure>
+                
+                <figure>
+                <img src="BOOKS/educational - books/math.png" alt="Picture Math Addition">
+                <p>This workbook offers a comprehensive approach to learning math through cutting, pasting, and counting, ensuring a comprehensive understanding of the subject matter.</p>
+                <h2>P106.00</h2>
+                </figure>
+                
+                <figure>
+                <img src="BOOKS/educational - books/outer spcae.png" alt="Outer Space Objects">
+                <p>This book orbits all sorts of outer space objects. Introduce kids to bits of space with this easy-to-read series that goes from Earth to nebula in light speed</p>
+                <h2>P106.00</h2>
+                </figure>
+            </section>
+        </article>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About BookEd</h3>
+                    <nav>
+                        <a href="about">About Us</a>
+                        <a href="mv">Mission and Vision</a>
+                        <a href="notif">Website Notification</a>
+                    </nav>
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <nav>
+                        <a href="facebook">Facebook Page</a>
+                        <a href="instagram">Instagram Page</a>
+                        <a href="telphone">Telephone Number</a>
+                        <a href="email">Email</a>
+                    </nav>
+                </div>
+        
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <nav>
+                        <a href="payment">Payment Methods</a>
+                        <a href="faqs">Frequently Asked Questions</a>
+                    </nav>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Payment</h3>
+                        <div class="payment-logos">
+                            <img src="images/cod.png" alt="Cash On Delivery" height="40" width="80">
+                            <img src="images/gcash.png" alt="GCash" height="40" width="80">
+                            <img src="images/dragonpay.png" alt="DragonPay" height="40" width="80">
+                            <img src="images/maya.png" alt="Maya" height="40" width="80">
+                            <img src="images/visa.png" alt="Visa" height="40" width="80">
+                        </div>
+                    </div>
+                </div>
+        </footer>
+</body>
+</html>
